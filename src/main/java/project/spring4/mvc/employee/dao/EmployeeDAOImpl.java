@@ -13,7 +13,11 @@ import java.util.List;
 
 @Repository("empdao")
 public class EmployeeDAOImpl implements EmployeeDAO {
+    @Value("#{jdbc['insertSQL']}") private String insertSQL;
     @Value("#{jdbc['selectSQL']}") private String selectSQL;
+    @Value("#{jdbc['selectOneSQL']}") private String selectOneSQL;
+    @Value("#{jdbc['updateSQL']}") private String updateSQL;
+    @Value("#{jdbc['deleteSQL']}") private String deleteSQL;
     private JdbcTemplate jdbcTemplate;
     @Autowired
     public EmployeeDAOImpl(JdbcTemplate jdbcTemplate) {
@@ -27,9 +31,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> selectEmployee() {
-        RowMapper<Employee> mapper = new EmpMapper();
+        RowMapper<Employee> mapper = new EmployeeMapper();
         return jdbcTemplate.query(selectSQL, mapper);
 
+    }
+    private class EmployeeMapper implements RowMapper<Employee> {
+
+        @Override
+        public Employee mapRow(ResultSet rs, int num) throws SQLException {
+            Employee emp = new Employee(rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5));
+
+            return emp;
+        }
     }
 
     @Override
@@ -47,20 +64,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return 0;
     }
 
-    private class EmpMapper implements RowMapper<Employee> {
-
-        @Override
-        public Employee mapRow(ResultSet rs, int num) throws SQLException {
-            Employee emp = new Employee(rs.getInt(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getInt(5)
-                    );
-
-            return emp;
-        }
-    }
 
 
 }
