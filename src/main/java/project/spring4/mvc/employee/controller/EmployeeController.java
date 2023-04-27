@@ -67,5 +67,27 @@ public class EmployeeController {
         return "redirect:/list";
     }
 
+    @GetMapping("/modify")
+    public ModelAndView modify(@RequestParam int empid){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("emp", empsrv.readOneEmployee(empid));
+        mv.setViewName("empmodify");
+        return mv;
+    }
+
+    @PostMapping("/modify")
+    public ModelAndView modifyok(Employee emp){
+        String view = "empfail";
+        ModelAndView mv = new ModelAndView();
+
+        if(empsrv.modifyEmployee(emp)){
+            view = "redirect:/view?empid=" + emp.getEmpid();
+        }
+        mv.setViewName(view);
+
+        return mv;
+    }
+
+
 
 }

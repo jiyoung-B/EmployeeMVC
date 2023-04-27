@@ -94,7 +94,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public int updateEmployee(Employee emp) {
-        return 0;
+        Object[] param = new Object[]{
+                emp.getJobid(),
+                emp.getMgrid(),
+                emp.getDeptid(),
+                emp.getEmpid()
+
+        };
+
+        return jdbcTemplate.update(updateSQL, param);
     }
 
     @Override
