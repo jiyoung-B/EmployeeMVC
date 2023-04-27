@@ -27,8 +27,8 @@ public class EmpServiceImpl implements EmpService{
     }
 
     @Override
-    public Employee readOneEmployee() {
-        return null;
+    public Employee readOneEmployee(int empid) {
+        return empdao.selectOneEmployee(empid);
     }
 
     @Override

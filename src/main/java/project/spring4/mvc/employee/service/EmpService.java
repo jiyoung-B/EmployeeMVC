@@ -8,7 +8,7 @@ public interface EmpService {
 
     boolean newEmployee(Employee emp);
     List<Employee> readEmployee();
-    Employee readOneEmployee();
+    Employee readOneEmployee(int empid);
     boolean modifyEmployee(Employee emp);
     boolean removeEmployee(int empid);
 

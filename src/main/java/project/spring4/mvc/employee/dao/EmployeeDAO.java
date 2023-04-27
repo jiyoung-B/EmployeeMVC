@@ -7,7 +7,7 @@ import java.util.List;
 public interface EmployeeDAO {
     int insertEmployee(Employee emp);
     List<Employee> selectEmployee();
-    Employee selectOneEmployee();
+    Employee selectOneEmployee(int empid);
     int updateEmployee(Employee emp);
     int deleteEmployee(int empid);
 

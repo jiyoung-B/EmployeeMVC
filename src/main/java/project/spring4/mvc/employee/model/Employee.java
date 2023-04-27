@@ -17,19 +17,6 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int empid, String fname, String lname, String email, String phone, String hdate, String jobid, int sal, double comm, int mgrid, int deptid) {
-        this.empid = empid;
-        this.fname = fname;
-        this.lname = lname;
-        this.email = email;
-        this.phone = phone;
-        this.hdate = hdate;
-        this.jobid = jobid;
-        this.sal = sal;
-        this.comm = comm;
-        this.mgrid = mgrid;
-        this.deptid = deptid;
-    }
 
     public Employee(int empid, String fname, String email, String jobid, int deptid) {
         this.empid = empid;
@@ -37,6 +24,15 @@ public class Employee {
         this.email = email;
         this.jobid = jobid;
         this.deptid = deptid;
+    }
+    public Employee(int empid, String fname, String lname, String email, String phone, String hdate, String jobid, int sal, double comm, int mgrid, int deptid) {
+        this(empid, fname, email, jobid, deptid);
+        this.lname = lname;
+        this.phone = phone;
+        this.hdate = hdate;
+        this.sal = sal;
+        this.comm = comm;
+        this.mgrid = mgrid;
     }
 
     public int getEmpid() {
