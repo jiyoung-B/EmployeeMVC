@@ -25,8 +25,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public int insertEmployee(Employee emp) {
-        return 0;
+    public int insertEmployee(Employee e) {
+
+        Object[] params = new Object[]{
+                e.getEmpid(),
+                e.getFname(),
+                e.getLname(),
+                e.getEmail(),
+                e.getPhone(),
+                e.getHdate(),
+                e.getJobid(),
+                e.getSal(),
+                e.getComm(),
+                e.getMgrid(),
+                e.getDeptid()
+        };
+
+        return jdbcTemplate.update(insertSQL, params);
     }
 
     @Override

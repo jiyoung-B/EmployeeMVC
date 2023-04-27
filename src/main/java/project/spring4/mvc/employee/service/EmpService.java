@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface EmpService {
 
-    int newEmployee(Employee emp);
+    boolean newEmployee(Employee emp);
     List<Employee> readEmployee();
     Employee readOneEmployee();
-    int modifyEmployee(Employee emp);
-    int removeEmployee(int empid);
+    boolean modifyEmployee(Employee emp);
+    boolean removeEmployee(int empid);
 
 
 }
