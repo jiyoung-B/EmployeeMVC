@@ -38,6 +38,8 @@ public class EmpServiceImpl implements EmpService{
 
     @Override
     public boolean removeEmployee(int empid) {
-        return false;
+        boolean result = false;
+        if(empdao.deleteEmployee(empid) > 0) result = true;
+        return result;
     }
 }
